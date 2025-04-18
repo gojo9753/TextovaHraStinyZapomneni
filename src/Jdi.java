@@ -64,7 +64,7 @@ class Jdi implements Prikaz {
                     System.out.println("Místo s ID " + idLokace + " neexistuje.");
                 }
             } else {
-                System.out.println("Z tohoto místa se do místa  " + mapaSveta.getLokace(idLokace).getNazev() + " nedá jít.");
+                System.out.println("Z tohoto místa se do místa " + mapaSveta.getLokace(idLokace).getNazev() + " nedá jít.");
             }
         }
     }

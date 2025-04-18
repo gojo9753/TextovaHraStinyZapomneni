@@ -116,12 +116,12 @@ class MapaSveta {
                         postavy.put(nazev, postava);
                     }
                 } else {
-                    System.out.println("Chybný řádek v souboru postavy.txt.txt: " + radek);
+                    System.out.println("Chybný řádek v souboru postavy.txt: " + radek);
                 }
             }
             ctecka.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Soubor postavy.txt.txt nebyl nalezen. Vytvářím prázdný seznam postav.");
+            System.out.println("Soubor postavy.txt nebyl nalezen. Vytvářím prázdný seznam postav.");
         }
         return postavy;
     }

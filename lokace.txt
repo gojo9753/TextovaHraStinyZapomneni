@@ -2,7 +2,7 @@
 2;Knihovna;Obsahuje záznamy o historii města.;1,4
 3;Chrám;Ukrývá starodávný svitek s vodítky.;1,4
 4;Katakomby;Tajné chodby pod městem.;2,3,5
-5;StrážníVěž;Poslední místo, kde se nachází artefakt. Tady mužete hru ukončit;4
+5;StrážníVěž;Poslední místo, kde se nachází artefakt. Tady můžete hru ukončit.;4
 6;Opatství;Zničený klášter, který ukrývá důležitý rukopis.;7
 7;StarýHostinec;Opuštěné místo, kde lze nalézt stopy po obyvatelích.;6,8
 8;Tržiště;Kdysi živé místo, nyní plné ztracených věcí.;1,7,9

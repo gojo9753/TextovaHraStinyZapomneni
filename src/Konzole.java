@@ -13,6 +13,7 @@ class Konzole {
     boolean konecHry;
     private HashMap<String, Predmet> inventar;
     private Stack<Integer> historieLokaci;
+    private HashMap<String, Quiz> kvizy;
 
 
     public Konzole(MapaSveta mapaSveta) {
@@ -22,7 +23,9 @@ class Konzole {
         this.konecHry = false;
         this.inventar = new HashMap<>();
         this.historieLokaci = new Stack<>();
+        this.kvizy = new HashMap<>();
         inicializujPrikazy();
+        inicializujKvizy();
     }
 
     private void inicializujPrikazy() {
@@ -32,14 +35,50 @@ class Konzole {
         prikazy.put("pouzij", new Pouzij(mapaSveta, inventar));
         prikazy.put("vezmi", new Vezmi(mapaSveta, inventar));
         prikazy.put("mluv", new Mluv(mapaSveta));
+        prikazy.put("odpovez", new Odpovez(mapaSveta, inventar, kvizy));
     }
 
-    private void inicializujInventar() {
+    private void inicializujKvizy() {
+        // Hádanka od Bloudícího dítěte
+        kvizy.put("BloudícíDítě", new Quiz(
+            "Nejsem živý, ale rostu; nemám plíce, ale potřebuji vzduch; nemám ústa, ale voda mě zabije. Co jsem?",
+            "oheň",
+            "BloudícíDítě",
+            "Amulet světla"
+        ));
+        
+        // Kvíz od Kováře Ulricha
+        kvizy.put("KovářUlrich", new Quiz(
+            "Jsem most zlomený, pomoz mi opravit srdce mého i mostu. Najdi co spojuje minulost a budoucnost, není to železo, ale je to silnější než ocel.",
+            "vzpomínky",
+            "KovářUlrich",
+            "opravený most"
+        ));
+        
+        // Kvíz od Mistra Harlana
+        kvizy.put("MistrHarlan", new Quiz(
+            "Abych ti dal elixír pravdy, musíš nejprve dokázat svou moudrost. Co je to, co chodí po čtyřech ráno, po dvou v poledne a po třech večer?",
+            "člověk",
+            "MistrHarlan",
+            "Elixír vědění"
+        ));
+        
+        // Hádanka od Ducha knihovníka
+        kvizy.put("DuchKnihovníka", new Quiz(
+            "V prachu času leží odpověď. Najdi první písmeno nejstaršího svitku, poslední písmeno zapomnění a prostřední písmeno tajemství. Jaké slovo vytvoří?",
+            "stp",
+            "DuchKnihovníka",
+            "Klíč"
+        ));
     }
+
     public void hraj() {
         mapaSveta.nactiMapu();
         Lokace aktualniLokace = mapaSveta.getAktualniLokace();
         historieLokaci.push(mapaSveta.getAktualniLokaceId());
+        System.out.println("\n==========================================================");
+        System.out.println("             STÍNY ZAPOMNĚNÍ - TEXTOVÁ HRA                ");
+        System.out.println("==========================================================\n");
         System.out.println("Vítejte ve hře Stíny Zapomnění!");
         System.out.println("Začínáte v místnosti: " + aktualniLokace.getNazev());
         System.out.println(aktualniLokace.getPopis());
@@ -47,6 +86,7 @@ class Konzole {
         zobrazInventar();
         zobrazCesty();
         while (!konecHry) {
+            System.out.println("\n----------------------------------------------------------");
             System.out.print("> ");
             String vstup = scanner.nextLine();
             String[] slova = vstup.split(" ");
@@ -57,13 +97,31 @@ class Konzole {
                     parametry[i - 1] = slova[i];
                 }
                 provedPrikaz(nazevPrikazu, parametry);
+                System.out.println("\n==========================================================");
             } else {
                 System.out.println("Musíš zadat nějaký příkaz.");
+                System.out.println("\n==========================================================");
+            }
+            if (konecHry) {
+                break;
             }
             zobrazCesty();
             zobrazInventar();
             zobrazPrikazy();
             zobrazPostavy();
+            zobrazHadanky();
+        }
+    }
+
+    private void zobrazHadanky() {
+        Lokace aktualniLokace = mapaSveta.getAktualniLokace();
+        for (Postava postava : aktualniLokace.getPostavy().values()) {
+            String nazevPostavy = postava.getNazev();
+            Quiz kviz = kvizy.get(nazevPostavy);
+            if (kviz != null && !kviz.isVyreseno()) {
+                System.out.println("Hádanka od " + nazevPostavy + ": " + kviz.getOtazka());
+                System.out.println("(Použij příkaz: odpovez " + nazevPostavy + " <tvá odpověď>)");
+            }
         }
     }
 
@@ -75,7 +133,6 @@ class Konzole {
 
     }
 
-    // Метод для выполнения команды
     private void provedPrikaz(String nazevPrikazu, String[] parametry) {
         Prikaz prikaz = prikazy.get(nazevPrikazu);
         if (prikaz != null) {
@@ -104,8 +161,8 @@ class Konzole {
     private void zobrazCesty() {
         Lokace aktualniLokace = mapaSveta.getAktualniLokace();
         if (aktualniLokace != null) {
-            System.out.println("Aktualní místnost: " + aktualniLokace.getNazev());
-            System.out.println("Dostupné predmety:");
+            System.out.println("Aktuální místnost: " + aktualniLokace.getNazev());
+            System.out.println("Dostupné předměty:");
             for (Predmet predmet : aktualniLokace.getPredmety().values()) {
                 System.out.println("- " + predmet.getNazev() + ": " + predmet.getPopis());
             }

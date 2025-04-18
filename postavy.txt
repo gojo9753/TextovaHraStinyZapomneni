@@ -1,6 +1,6 @@
 2;DuchKnihovníka;Vítej, hledači. Klíč k tvému putování leží v zaprášených svitcích.
 3;StrážceChrámu;Dále neprojdeš, cizinče! Chrám střeží tajemství města.
-4;StínýPrůvodce;Sleduji tě, poutníku. Tvá cesta je plná nebezpečí i poznání.
+4;StínovýPrůvodce;Sleduji tě, poutníku. Tvá cesta je plná nebezpečí i poznání.
 5;MatkaIsabela;Odpuštění... to je vše, co hledám v těchto stínech.
 6;MistrHarlan;Elixír pravdy ti ukáže skryté cesty, ale pamatuj, poznání má svou cenu.
 7;KovářUlrich;Mám zlomené srdce i most. Pomoz mi a já pomůžu tobě.

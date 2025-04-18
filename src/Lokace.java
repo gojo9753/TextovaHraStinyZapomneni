@@ -36,11 +36,17 @@ class Lokace {
         return predmety;
     }
 
-       public Predmet odeberPredmet(String nazevPredmetu) {
+    public Predmet odeberPredmet(String nazevPredmetu) {
         return predmety.remove(nazevPredmetu);
     }
 
     public HashMap<String, Postava> getPostavy() {
         return postavy;
+    }
+    
+    public void pridejCestu(int idCile) {
+        if (!mozneCesty.contains(idCile)) {
+            mozneCesty.add(idCile);
+        }
     }
 }
