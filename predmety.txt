@@ -1,0 +1,7 @@
+10;Klíč;Otevírá zamčené dveře.
+2;AmuletSvětla;Odhání temné síly.
+3;Svitky;Obsahují důležité nápovědy.
+3;Meč;Zbraň proti nepřátelům.
+4;KřišťálováDýka;Umožňuje vidět a bojovat s duchy.
+5;StříbrnáMince;Může být směněna za důležité informace na tržišti.
+6;ElixírVědění;Dočasně odhaluje skryté nápovědy a tajné průchody.

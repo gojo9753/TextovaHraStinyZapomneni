@@ -1,0 +1,10 @@
+1;Náměstí;Centrální bod města, výchozí pozice.;2,3,8
+2;Knihovna;Obsahuje záznamy o historii města.;1,4
+3;Chrám;Ukrývá starodávný svitek s vodítky.;1,4
+4;Katakomby;Tajné chodby pod městem.;2,3,5
+5;StrážníVěž;Poslední místo, kde se nachází artefakt. Tady mužete hru ukončit;4
+6;Opatství;Zničený klášter, který ukrývá důležitý rukopis.;7
+7;StarýHostinec;Opuštěné místo, kde lze nalézt stopy po obyvatelích.;6,8
+8;Tržiště;Kdysi živé místo, nyní plné ztracených věcí.;1,7,9
+9;RozpadlýMost;Přechod mezi dvěma částmi města, který je třeba opravit.;8,10
+10;PodzemníSvatyně;Skryté místo, kde se nachází záhady.;9
